@@ -93,6 +93,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: main
+          token: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Generate release text
         run: |
@@ -107,6 +108,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ needs.metadata.outputs.version }}
+          token: ${{ secrets.PERSONAL_TOKEN }}
           body: |
             Caddy release notes: https://github.com/caddyserver/caddy/releases/tag/v${{ needs.metadata.outputs.version }}
 
