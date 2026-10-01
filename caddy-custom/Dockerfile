@@ -10,7 +10,7 @@ RUN xcaddy build \
     --with github.com/mholt/caddy-ratelimit \
     --with github.com/greenpau/caddy-security \
     --with github.com/porech/caddy-maxmind-geolocation \
-    --with https://github.com/mholt/caddy-l4
+    --with github.com/mholt/caddy-l4
 
 FROM caddy:2.11.4
 
