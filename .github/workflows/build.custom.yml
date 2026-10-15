@@ -90,8 +90,12 @@ jobs:
         org.opencontainers.image.description=Caddy Docker custom build
       set-meta-labels: true
 
+    # Use secrets.GITHUB_TOKEN, not github.token: the latter is auto-masked,
+    # and the reusable-workflow `secrets:` boundary blanks masked values, so
+    # github.token arrives empty (verified empirically: a probe printout read
+    # length 0 with github.token and 377 with secrets.GITHUB_TOKEN).
     secrets:
       registry-auths: |
         - registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ github.token }}
+          password: ${{ secrets.GITHUB_TOKEN }}
